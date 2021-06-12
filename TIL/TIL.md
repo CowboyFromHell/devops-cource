@@ -1,12 +1,12 @@
 # TIL (Today I've Learned)
 
 ### 31/05/2021
-I listened to the first lecture on Andersen DevOps courses. Speakers was great. Lesson was sctuctured and intresting.
+I listened to the first lecture on **[Andersen](https://andersenlab.com) DevOps courses**. Speakers was great. The Lesson was structured and interesting.
 
-I refreshed my knowledge about application development life cycles, remembered their advantages and disadvantages.
+I refreshed my knowledge about **application development life cycles**, remembered their advantages and disadvantages.
 
 ### 01/06/2021
-I was reading "UNIX and Linux System Administration Handbook", chapter about daemons.
+I was reading "**UNIX and Linux System Administration Handbook**", chapter about daemons.
 
 ### 02/06/2021
 Found and started using the utility **[noti](https://github.com/variadico/noti)**. Very useful.
