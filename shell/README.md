@@ -30,15 +30,18 @@ Requirements:
 
 Usage:
     
-    processwhoise.sh [-p] [-n 5] [-s]
+    processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 or
 
-    sudo processwhoise.sh [-p] [-n 5] [-s]
+    sudo processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 
 Options:
 + -p Process name or PID (**required**)
 + -n Number of output lines, 5 by default (***optional***)
 + -s The state of socket (ALL by default, ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN as option) (***optional***)
++ -d Debug mode, no argument needed (***optional***)
++ -v Version, no argument needed (***optional***)
++ -h Help information about script, no argument needed (***optional***)
 
 Note: 
 1. The order of the arguments is **not important**
@@ -55,7 +58,7 @@ screenshot
 
 screenshot
 
-    processwhoise.sh -p 'chrome'
+    processwhoise.sh -p 'chrome' -d
 
 screenshot
 
