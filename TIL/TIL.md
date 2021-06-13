@@ -83,3 +83,8 @@ for development VPS:
 
 ### 12/06/2021
 I spent all the night moving and decorating my week's notes from my paper diary to my notebook TIL blog. (*There was a reason for that*)
+
+Made the first version of the shell script and the README.md file for it.
+
+### 13/06/2021
+I wrote the main part of the shell script and the main part of the README.md file. The script started working properly on all main points.
