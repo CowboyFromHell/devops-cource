@@ -6,6 +6,25 @@ version=0.2
 # Help information for -h option
 help_info=$(cat <<EOF
 Script that shows IP Whois information about connections by process name or PID
+
+Usage:
+    processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+or
+    sudo processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+
+Options:
+-p Process name or PID (required)
+-n Number of output lines, 5 by default (optional)
+-s The state of socket (ALL by default, ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN as option) (optional)
+-d Debug mode, no argument needed (optional)
+-v Version, no argument needed (optional)
+-h Help information about script, no argument needed (optional)
+
+Examples:
+    processwhoise.sh -p 'vivaldi' -n 15
+    processwhoise.sh -s 'LISTEN' -n 7 -p 'telegram' 
+    processwhoise.sh -p 'chrome' -d
+    processwhoise.sh -p 5267 -n 3 -s CLOSE_WAIT
 EOF
 )
 
@@ -21,7 +40,7 @@ if [[ -z "$(which netstat)" ]]; then
 fi
 
 if [[ -z "$(which whois)" ]]; then
-    echo "You have not whois on your system! You may install it and tey again."
+    echo "You have not whois on your system! You may install it and try again."
     exit
 fi
 
@@ -44,7 +63,7 @@ while [ -n "$1" ]; do
         shift ;;
     -n) param="$2"
         num=$param
-        debug_info+="Found the -n option, with argument value $param\n"
+        debug_info+="Found the -n option with argument value $param\n"
         shift ;;
     -s) param="$2"
         state=$param
@@ -103,7 +122,7 @@ elif [[ " ${socket_states[*]} " != *" $state "* ]]; then
     state=$state_default
 fi
 
-debug_info+="\nEND CHEKING\n\nCollected arguments and variables after checking:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\n"
+debug_info+="\nEND CHECKING\n\nCollected arguments and variables after checking:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\n"
 
 
 if [[ "$debug_flag" == 1 ]]; then
@@ -127,7 +146,7 @@ else
     exit
 fi
 
-# Found ip (for debug only)
+# Found ip (for debug)
 debug_info+="IP:\n"
 for i in ${ip}; do
     debug_info+="$i\n"
