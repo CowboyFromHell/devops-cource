@@ -1,52 +1,94 @@
 #!/bin/bash
 # Script that shows IP Whois information about connections by process name or PID
 
-# Preparing checks: netstat & whois availability, access rights 
+version=0.2
+
+# Help information for -h option
+help_info=$(cat <<EOF
+Script that shows IP Whois information about connections by process name or PID
+EOF
+)
+
+# Preparing checks: access rights, netstat & whois availability on system, 
 # Check the script is being run by root
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root to see all available information"
 fi
 
-# Default values for arguments
+if [[ -z "$(which netstat)" ]]; then
+    echo "You have not netstat on your system! You may install it with net-tools package and try again"
+    exit
+fi
+
+if [[ -z "$(which whois)" ]]; then
+    echo "You have not whois on your system! You may install it and tey again."
+    exit
+fi
+
+# Default values for arguments and variables
 num_default=5
 state_default='ALL'
 socket_states=(ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN)
+debug_flag=0
+version_flag=0
+help_flag=0
+debug_info=''
 
 # Collecting agruments
+debug_info+="Arguments parsing STARTS:\n\n"
 while [ -n "$1" ]; do
     case "$1" in
     -p) param="$2" 
         process=$param
-        echo "Found the -p option with parameter value $param"
+        debug_info+="Found the -p option with argument value $param\n"
         shift ;;
     -n) param="$2"
         num=$param
-        echo "Found the -n option, with parameter value $param"
+        debug_info+="Found the -n option, with argument value $param\n"
         shift ;;
     -s) param="$2"
         state=$param
-        echo "Found the -s option with parameter value $param"
+        debug_info+="Found the -s option with argument value $param\n"
         shift ;;
+    -d) debug_flag=1
+        debug_info+="Found the -d option\n";;
+    -v) version_flag=1
+        debug_info+="Found the -v option\n";;
+    -h) help_flag=1
+        debug_info+="Found the -h option\n";;   
     --) shift
         break ;;
-    *) echo "$1 is not an option for that script, it has no effect";;
+    *) debug_info+="$1 is not an option for that script, it has no effect\n";;
     esac
     shift
 done
+debug_info+="\nArguments parsing ENDS.\n\n"
 
-echo 'Collected arguments:'
-echo 'scriptname: '$0
-echo 'process:' $process
-echo 'num: '$num
-echo 'state: ' $state
-echo
+if [[ "$help_flag" == 1 ]]; then
+    echo "${help_info}"
+    exit
+fi
 
-echo 'START CHEСKING:'
+if [[ "$version_flag" == 1 ]]; then
+    echo "$(basename $0) version: $version"
+    exit
+fi
+
+debug_info+="Collected arguments and variables:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\nSTART CHEСKING:\n"
+
+if [[ "$debug_flag" == 1 ]]; then
+    echo -e $debug_info
+    debug_info=''
+fi
 
 # Checking agruments values for correctness and changing them to defaults if necessary
 if [ -z "$process" ]; then
-  echo "Process name\PID argument (-p) isn't set. Try again with -p 'process name\PID' option"
-  exit
+    echo "Process name\PID argument (-p) isn't set. Try again with -p 'process name\PID' option"\n 
+    exit
+fi
+
+if [ -z "$num" ]; then
+    num=$num_default
 fi
 
 if [[ "$num" =~ [^0-9]+ ]]; then
@@ -61,13 +103,13 @@ elif [[ " ${socket_states[*]} " != *" $state "* ]]; then
     state=$state_default
 fi
 
-echo 'END CHEKING'
-echo
-echo 'After checking:'
-echo 'scriptname: '$0
-echo 'process:' $process
-echo 'num: '$num
-echo 'state: ' $state
+debug_info+="\nEND CHEKING\n\nCollected arguments and variables after checking:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\n"
+
+
+if [[ "$debug_flag" == 1 ]]; then
+    echo -e $debug_info
+    debug_info=''
+fi
 
 # Get netstat dump with specific or default state
 if [[ "$state" != "ALL" ]]; then  
@@ -85,18 +127,18 @@ else
     exit
 fi
 
-echo 
-
-# Found ip
-echo 'IP:'
+# Found ip (for debug only)
+debug_info+="IP:\n"
 for i in ${ip}; do
-    echo $i
+    debug_info+="$i\n"
 done
 
-echo
+if [[ "$debug_flag" == 1 ]]; then
+    echo -e $debug_info
+    debug_info=''
+fi
 
 # Final output
-echo 'Organizations:'
 for i in ${ip}; do
     result="$(whois "$i" | awk -F':' '/^Organization/ {print $2}')"
     if [[ -z "$result" ]]; then
