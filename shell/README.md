@@ -30,23 +30,25 @@ Requirements:
 
 Usage:
     
-    processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
 or
 
-    sudo processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    sudo processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
 
 Options:
 + -p Process name or PID (**required**)
 + -n Number of output lines, 5 by default (***optional***)
 + -s The state of socket (ALL by default, ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN as option) (***optional***)
++ -w Whois search phrase, "Organization" by default (For example: country, netname, create) (***optional***)
 + -d Debug mode, no argument needed (***optional***)
 + -v Version, no argument needed (***optional***)
 + -h Help information about script, no argument needed (***optional***)
 
 Note: 
-1. The order of the arguments is **not important**
-2. Any "extra" arguments or options **do not** affect the script
+1. The order of the arguments is **not important**.
+2. Any "extra" arguments or options **do not** affect the script.
 3. If you run script without sudo - script will just inform you about that, but it will continue to work fine. However, not all processes in this case can be identified by the netstat utility.
+4. For -h and -v options -p option isn't necessary.
 
 
 Usage examples:
@@ -79,6 +81,10 @@ Usage examples:
 
 ![Example 6](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois6.png?raw=true)
 
+    sudo processwhois.sh -p 'vivaldi' -w 'netname'
+
+![Example 7](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois7.png?raw=true)
+
 ## About how it works and what it contains
 
 The original single-line script
@@ -102,4 +108,4 @@ can be divided into **four** stages:
 
 In my realization of this shell script, I am doing all of these stages, step by step.
 
-I also check for the necessary utilities in the system (whois & netstat), check the input data (required and optional), report errors (invalid parameter values), and implement additional functionality (-h-v-d options).
+I also check for the necessary utilities in the system (whois & netstat), check the input data (required and optional), report errors (invalid parameter values), and implement additional functionality (-h -v -d -w options).
