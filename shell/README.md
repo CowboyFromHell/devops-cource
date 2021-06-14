@@ -12,12 +12,12 @@ Requirements:
 3. Output lines also must be specified by the user
 4. Should be possible to see other connection states
 5. Script should give the user simple and understangable error messages
-6. Script shouldn't depend from access right privileges. It should give the user a warning message.
+6. Script shouldn't depend from access right privileges. It should give the user a warning message
 
 Additional requirements:
 1. Script outputs the number of connections for each organization
 2. Script allows to get another information from whois
-3. Script can work with 'ss'
+3. Script can work with 'ss', use utilities\built-ins, not only what's inside single-line command
 
 ---
 ## About shell script ProcessWhois.sh
@@ -30,10 +30,10 @@ Requirements:
 
 Usage:
     
-    processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 or
 
-    sudo processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    sudo processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 
 Options:
 + -p Process name or PID (**required**)
@@ -50,18 +50,51 @@ Note:
 
 Usage examples:
 
-    processwhoise.sh -p 'vivaldi' -n 15
+    processwhois.sh -p 'Telegram' -n 4
 
-screenshot
+![Example 1](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois1.png?raw=true)
 
-    processwhoise.sh -s 'LISTEN' -n 7 -p 'telegram' 
+    processwhois.sh -s 'CLOSE_WAIT' -n 7 -p 'vivaldi' 
 
-screenshot
+![Example 2](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois2.png?raw=true)
 
-    processwhoise.sh -p 'chrome' -d
+    processwhois.sh -p 'chrome' -d
 
-screenshot
+![Example 3](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois3.gif?raw=true)
 
-    processwhoise.sh -p 5267 -n 3 -s CLOSE_WAIT
+    processwhois.sh -p 3267 -n 4 -s ESTABLISHED
 
-screenshot
+![Example 4](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois4.png?raw=true)
+
+    processwhois.sh -h
+
+![Example 5](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois5.png?raw=true)
+
+    processwhois.sh -v
+
+![Example 6](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/shell/processwhois6.png?raw=true)
+
+## About how it works and what it contains
+
+The original single-line script
+    
+    sudo netstat -tunapl | awk '/firefox/ {print $5}' | cut -d: -f1 | sort | uniq -c | sort | tail -n5 | grep -oP '(\d+\.){3}\d+' | while read IP ; do whois $IP | awk -F':' '/^Organization/ {print $2}' ; done
+
+can be divided into four stages:
+
+1. Executing the netstat utility with the "-tunapl" parameters
+   
+        netstat -tunapl 
+2. Filtering results by process name (or PID) and IP address allocation
+
+        awk '/firefox/ {print $5}' 
+3. IP address processing, port trimming, sorting
+
+        cut -d: -f1 | sort | uniq -c | sort | tail -n5 | grep -oP '(\d+\.){3}\d+' 
+4. Search Whois information on specific IP addresses
+
+        while read IP ; do whois $IP | awk -F':' '/^Organization/ {print $2}' ; done
+
+In my realization of this shell script, I am doing all of these stages, step by step.
+
+I also check for the necessary utilities in the system (whois & netstat), check the input data (required and optional), report errors (invalid parameter values), and implement additional functionality (-h-v-d options).
