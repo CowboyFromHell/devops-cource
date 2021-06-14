@@ -1,4 +1,4 @@
-# Shell script hometask
+# Shell script
 
 ### Task:
 
@@ -30,10 +30,10 @@ Requirements:
 
 Usage:
     
-    processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
+    processwhois.sh -p process_name_or_pid [-n number] [-s state] [-w whois_phrase] [-d] [-v|-h]
 or
 
-    sudo processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
+    sudo processwhois.sh -p process_name_or_pid [-n number] [-s state] [-w whois_phrase] [-d] [-v|-h]
 
 Options:
 + -p Process name or PID (**required**)
