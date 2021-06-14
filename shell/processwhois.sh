@@ -1,21 +1,22 @@
 #!/bin/bash
 # Script that shows IP Whois information about connections by process name or PID
 
-version=0.2
+version=0.3
 
 # Help information for -h option
 help_info=$(cat <<EOF
 Script that shows IP Whois information about connections by process name or PID
 
 Usage:
-    processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
 or
-    sudo processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    sudo processwhois.sh [-p] [-n 5] [-s ALL] [-w Organization] [-d] [-v] [-h]
 
 Options:
 -p Process name or PID (required)
 -n Number of output lines, 5 by default (optional)
 -s The state of socket (ALL by default, ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN as option) (optional)
+-w Whois search phrase, "Organization" by default (optional)
 -d Debug mode, no argument needed (optional)
 -v Version, no argument needed (optional)
 -h Help information about script, no argument needed (optional)
@@ -25,6 +26,7 @@ Examples:
     processwhois.sh -s 'LISTEN' -n 7 -p 'telegram' 
     processwhois.sh -p 'chrome' -d
     processwhois.sh -p 5267 -n 3 -s CLOSE_WAIT
+    processwhois.sh -p 'vivaldi' -w 'netname'
 EOF
 )
 
@@ -52,6 +54,7 @@ debug_flag=0
 version_flag=0
 help_flag=0
 debug_info=''
+whois_default='Organization'
 
 # Collecting agruments
 debug_info+="Arguments parsing STARTS:\n\n"
@@ -59,22 +62,26 @@ while [ -n "$1" ]; do
     case "$1" in
     -p) param="$2" 
         process=$param
-        debug_info+="Found the -p option with argument value $param\n"
+        debug_info+="Found the -p (process name or PID) option with argument value $param\n"
         shift ;;
     -n) param="$2"
         num=$param
-        debug_info+="Found the -n option with argument value $param\n"
+        debug_info+="Found the -n (number of lines) option with argument value $param\n"
         shift ;;
     -s) param="$2"
         state=$param
-        debug_info+="Found the -s option with argument value $param\n"
+        debug_info+="Found the -s (socket state) option with argument value $param\n"
         shift ;;
+    -w) param="$2"
+        whois_search=$param
+        debug_info+="Found the -w (whois search phrase) option with argument value $param\n"
+        shift ;;    
     -d) debug_flag=1
-        debug_info+="Found the -d option\n";;
+        debug_info+="Found the -d (debug) option\n";;
     -v) version_flag=1
-        debug_info+="Found the -v option\n";;
+        debug_info+="Found the -v (version) option\n";;
     -h) help_flag=1
-        debug_info+="Found the -h option\n";;   
+        debug_info+="Found the -h (help) option\n";;   
     --) shift
         break ;;
     *) debug_info+="$1 is not an option for that script, it has no effect\n";;
@@ -93,7 +100,7 @@ if [[ "$version_flag" == 1 ]]; then
     exit
 fi
 
-debug_info+="Collected arguments and variables:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\nSTART CHEСKING:\n"
+debug_info+="Collected arguments and variables:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\nwhois_search:\t $whois_search\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\nSTART CHEСKING:\n"
 
 if [[ "$debug_flag" == 1 ]]; then
     echo -e $debug_info
@@ -122,7 +129,11 @@ elif [[ " ${socket_states[*]} " != *" $state "* ]]; then
     state=$state_default
 fi
 
-debug_info+="\nEND CHECKING\n\nCollected arguments and variables after checking:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\n"
+if [ -z "$whois_search" ]; then
+  whois_search=$whois_default
+fi
+
+debug_info+="\nEND CHECKING\n\nCollected arguments and variables after checking:\n\nscriptname:\t $(basename $0)\nprocess:\t $process\nnum:\t\t $num\nstate:\t\t $state\nwhois_search:\t $whois_search\ndebug_flag:\t $debug_flag\nversion_flag:\t $version_flag\nhelp_flag:\t $help_flag\n\n"
 
 
 if [[ "$debug_flag" == 1 ]]; then
@@ -159,9 +170,9 @@ fi
 
 # Final output
 for i in ${ip}; do
-    result="$(whois "$i" | awk -F':' '/^Organization/ {print $2}')"
+    result="$(whois "$i" | awk -F':' '/^'$whois_search'/ {print $2}')"
     if [[ -z "$result" ]]; then
-        echo 'Organization is not specified'
+        echo "$whois_search is not specified"
     else 
         echo $result
     fi
