@@ -8,9 +8,9 @@ help_info=$(cat <<EOF
 Script that shows IP Whois information about connections by process name or PID
 
 Usage:
-    processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 or
-    sudo processwhoise.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
+    sudo processwhois.sh [-p] [-n 5] [-s] [-d] [-v] [-h]
 
 Options:
 -p Process name or PID (required)
@@ -21,10 +21,10 @@ Options:
 -h Help information about script, no argument needed (optional)
 
 Examples:
-    processwhoise.sh -p 'vivaldi' -n 15
-    processwhoise.sh -s 'LISTEN' -n 7 -p 'telegram' 
-    processwhoise.sh -p 'chrome' -d
-    processwhoise.sh -p 5267 -n 3 -s CLOSE_WAIT
+    processwhois.sh -p 'vivaldi' -n 15
+    processwhois.sh -s 'LISTEN' -n 7 -p 'telegram' 
+    processwhois.sh -p 'chrome' -d
+    processwhois.sh -p 5267 -n 3 -s CLOSE_WAIT
 EOF
 )
 
