@@ -88,3 +88,25 @@ Made the first version of the shell script and the README.md file for it.
 
 ### 13/06/2021
 I wrote the main part of the shell script and the main part of the README.md file. The script started working properly on all main points.
+
+### 14/06/2021
+Completed the shell script, finished the README for the shell task.
+
+lection
+
+### 15/06/2021
+I watched a lot of videos tonight about maglevs (magnetic levitation trains). It's something wonderful, this technological "miracle," even though the technology itself is over 50 years old. I really want to ride this train someday in my life.
+
+I read information about [Ansible](https://www.ansible.com), its features and [practical use cases](https://habr.com/ru/post/305400/). I also looked through its [official documentation](https://docs.ansible.com).
+
+I read the book **"A Practical Guide to Continuous Delivery"** by *Eberhard Wolff*, part 2, chapter 4.
+
+### 16/06/2021
+Started writing a Python script, installed the necessary environment (Flask, Ansible), a Debian image, and created a VM for the Ansible task.
+
+lection
+
+### 17/06/2021
+I read about using [Ansible playbooks](https://hamsterden.ru/ansible-playbooks/).
+
+Tried working with Ansible on practical examples.
