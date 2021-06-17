@@ -15,7 +15,7 @@ I continued reading the book **"A Practical Guide to Continuous Delivery"** by *
 
 I was also prepairing for the second lesson on the cource.
 
-I listened to a lecture about the principles of **CI\CD** (Continuous Integration and Continuous Deployment). It was informative.
+I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about the principles of **CI\CD** (Continuous Integration and Continuous Deployment). It was informative.
 
 ### 03/06/2021
 Saved my notebook from the **biggest** in my life OS freeze. I have Mint 19.3 and the point was that my cat named ***"Kotunja"*** sat down at night on my notebooks keyboard and started typing a thousand of words, symbols, special symbols, press down some "hard" Hot-Keys and my notebook just freeze because of this "typing" attack. And it was not responding at all, keyboard, mouse, touchpad, screen - just nothing. But, for my luck - I'd opened SSH on my devices in local network (it's opened only in private LAN\WAN), so I just connected to my notebook from my Android Smartphone over SSH, ran **htop** utility and kill all "bad" processes easily. By the way, first connect to my frozen notebook via SSH took about **10-15 seconds**. In normal situation it took maybe **0.5** sec, or even less. 
@@ -43,7 +43,7 @@ I've remembered some features of the standard **ping** utility. More specificall
 I read the documentation about ["The Cache Component"](https://symfony.com/doc/current/components/cache.html) and ["The Asset Component"](https://symfony.com/doc/current/components/asset.html) of [Symfony](https://symfony.com) Framework (version 5.3), theirs features and usage. 
 
 ### 07/06/2021
-I listened to a lecture about the features of **scripting** for DevOps, and also about such tools as **Ansible**, **Chef**, **Puppet** and **SaltStack**, their features, advantages and disadvantages. That was very interesting.
+I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about the features of **scripting** for DevOps, and also about such tools as **Ansible**, **Chef**, **Puppet** and **SaltStack**, their features, advantages and disadvantages. That was very interesting.
 
 ### 08/06/2021
 I watched informative, useful and interesting videos on the YouTube channel named ["DistroTube"](https://www.youtube.com/c/DistroTube) that's specialized on Linux and its features.
@@ -59,9 +59,7 @@ I received an error, saying that my ntfs partitions mounted on Linux are in **re
 
 But in my case I decided that maybe at first we might check errors in "native" for ntfs OS - **Win 10**? So I did it and it **worked**. After reboot, my ntfs partitions was ok in my Linux Mint with **full access** mode.
 
----
-
-I listened to a lecture about **compiled**, **interpreted**, and **JIT-compiled** (Just-In-Time) programming languages. And also about various IDEs. It was very informative. By the way, my favorite IDE is **VS Code**. It's simple, fast and very powerful with plugins.
+I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about **compiled**, **interpreted**, and **JIT-compiled** (Just-In-Time) programming languages. And also about various IDEs. It was very informative. By the way, my favorite IDE is **VS Code**. It's simple, fast and very powerful with plugins.
 
 ### 10/06/2021
 I started working on my "bashscript" homework, including using the book "**Advanced Bash-Scripting Guide**" by ***Mendel Cooper***.
@@ -75,11 +73,11 @@ Results of
 
 for my notebook:
 
-![Local Network](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/homepc.png?raw=true)
+![Notebook HDD speed](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/homepc.png?raw=true)
 
 for development VPS:
 
-![Local Network](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/development-server.png?raw=true)
+![VPS HDD speed](https://github.com/MikeKozhevnikov/devops-cource/blob/main/media/development-server.png?raw=true)
 
 ### 12/06/2021
 I spent all the night moving and decorating my week's notes from my paper diary to my notebook TIL blog. (*There was a reason for that*)
@@ -92,10 +90,10 @@ I wrote the main part of the shell script and the main part of the README.md fil
 ### 14/06/2021
 Completed the shell script, finished the README for the shell task.
 
-lection
+I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about the **Git** version control system. Learned about **Git Flow**, details about **HEAD**, **branches** and **commits**. About best practices for working together. And also about ***good commit design***.
 
 ### 15/06/2021
-I watched a lot of videos tonight about maglevs (magnetic levitation trains). It's something wonderful, this technological "miracle," even though the technology itself is over 50 years old. I really want to ride this train someday in my life.
+I watched a lot of videos tonight about **maglevs** (magnetic levitation trains). It's something wonderful, this technological "miracle," even though the technology itself is over **50** years old. I really want to ride this train someday in my life.
 
 I read information about [Ansible](https://www.ansible.com), its features and [practical use cases](https://habr.com/ru/post/305400/). I also looked through its [official documentation](https://docs.ansible.com).
 
@@ -104,7 +102,7 @@ I read the book **"A Practical Guide to Continuous Delivery"** by *Eberhard Wolf
 ### 16/06/2021
 Started writing a Python script, installed the necessary environment (Flask, Ansible), a Debian image, and created a VM for the Ansible task.
 
-lection
+I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about **containerization** principles in Linux and **Docker**. It touched on virtual machines and hypervisors, management tools in Docker, Linux **Namespace**, Linux **Cgroups**. It was very interesting, learned a lot about the very simple isolation of processes in a container in Linux.
 
 ### 17/06/2021
 I read about using [Ansible playbooks](https://hamsterden.ru/ansible-playbooks/).
