@@ -108,3 +108,19 @@ I listened to a lecture at [**Andersenlab**](https://andersenlab.com) about **co
 I read about using [Ansible playbooks](https://hamsterden.ru/ansible-playbooks/).
 
 Tried working with Ansible on practical examples.
+
+Made the first deployment to the server using **Ansible**.
+
+### 18/06/2021
+I have read a lot of information on the [Flask framework](https://flask.palletsprojects.com). Especially what was given in the links to the Ansible assignment.
+
+Wrote and ran my first flask application, it was pretty easy.
+
+I learned how **routing** in flask works.
+
+Understood how modern *fancy emoji* works.
+
+Almost finished writing Python application using the flask framework. And also added ***mysterious*** response to GET / request for both browsers and curl.
+
+### 19/06/2021
+Finished coding flask application for [ansible task](https://github.com/MikeKozhevnikov/devops-cource/tree/main/ansible).
