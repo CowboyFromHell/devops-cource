@@ -1,0 +1,85 @@
+---
+  - name         : Deploy flask app to VM or VPS
+    hosts        : debianvm
+    become       : yes
+    become_method: su
+    become_user  : root
+
+    tasks:
+
+    # Change ssh settings on node machine
+    - name: Disable ssh password authentification
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^#?\s*PasswordAuthentication\s'
+        line: 'PasswordAuthentication no'
+        state: present
+      notify: reload sshd service
+
+    - name: Disable ssh login as root
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^#?\s*PermitRootLogin\s'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: reload sshd service
+
+    # Install all needed packages and modules
+    - name: Install packages - python3-pip
+      apt:
+        pkg:
+          - python3-pip
+        state: present
+        update_cache: no
+
+    - name: Install flask
+      pip:
+        name: flask
+        executable: pip3
+        state: present
+
+    - name: Install emoji module
+      pip:
+        name: emoji
+        executable: pip3
+        state: present
+
+    # Create destination dir on server for flask app
+    - name: Create flask app directory on server
+      file:
+        path: /srv/flask_app/
+        state: directory
+        #owner: www-data
+        #group: www-data
+        #mode: 0775  
+        recurse: yes  
+    
+    # Copy flask application to server
+    - name: Copy flask app to server
+      copy:
+        src: "{{ playbook_dir }}/source/"
+        dest: /srv/flask_app/
+
+    # Copy flask application service to server
+    - name: Copy flask app service to server
+      copy:
+        src: '{{ playbook_dir }}/flask_app.service'
+        dest: /etc/systemd/system/
+
+    - name: Enable Flask app service
+      service: 
+        name : flask_app.service 
+        enabled: yes
+
+    - name: Start Flask app service
+      service: 
+        name: flask_app.service 
+        state: started
+
+
+    # Handlers for running operations on change
+    handlers:
+      - name: reload sshd service
+        service:
+          name: sshd
+          state: reloaded
