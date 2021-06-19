@@ -131,7 +131,7 @@ Did this shields for the beginning:
 
 - Tasks status:        
 ![not started](https://img.shields.io/badge/-not%20started-red) ![in progress](https://img.shields.io/badge/-in%20progress-blue) ![done](https://img.shields.io/badge/-done-brightgreen)
-- My GitHub DevOps courses repo code size in bytes:
+- My GitHub DevOps courses repo **code** size in bytes:        
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MikeKozhevnikov/devops-cource)
-- My GitHub DevOps courses repo repo size:
+- My GitHub DevOps courses **repo** size:        
 ![GitHub repo size](https://img.shields.io/github/repo-size/MikeKozhevnikov/devops-cource)
