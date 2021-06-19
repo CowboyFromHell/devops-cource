@@ -135,3 +135,5 @@ Did this shields for the beginning:
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MikeKozhevnikov/devops-cource)
 - My GitHub DevOps courses **repo** size:        
 ![GitHub repo size](https://img.shields.io/github/repo-size/MikeKozhevnikov/devops-cource)
+
+I read the articles on Wikipedia about [Go](https://golang.org) programming language in [Russian](https://ru.wikipedia.org/wiki/Go) and [English](https://en.wikipedia.org/wiki/Go_(programming_language)), as well as the article about [syntactic sugar](https://ru.wikipedia.org/wiki/Синтаксический_сахар). I was more or less familiar with the Go language before, but it was new to me that the [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) tools in Go were limited to interfaces.
