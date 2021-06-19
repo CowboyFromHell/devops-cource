@@ -124,3 +124,14 @@ Almost finished writing Python application using the flask framework. And also a
 
 ### 19/06/2021
 Finished coding flask application for [ansible task](https://github.com/MikeKozhevnikov/devops-cource/tree/main/ansible).
+
+Started using [Shields](https://shields.io) for GitHub. Very interesting and beauty thing. And very simple as well! Nice!
+
+Did this shields for the beginning:
+
+- Tasks status:        
+![not started](https://img.shields.io/badge/-not%20started-red) ![in progress](https://img.shields.io/badge/-in%20progress-blue) ![done](https://img.shields.io/badge/-done-brightgreen)
+- My GitHub DevOps courses repo code size in bytes:
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MikeKozhevnikov/devops-cource)
+- My GitHub DevOps courses repo repo size:
+![GitHub repo size](https://img.shields.io/github/repo-size/MikeKozhevnikov/devops-cource)
