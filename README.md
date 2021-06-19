@@ -1,5 +1,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MikeKozhevnikov/devops-cource)
 ![GitHub repo size](https://img.shields.io/github/repo-size/MikeKozhevnikov/devops-cource)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MikeKozhevnikov/devops-cource)
+![GitHub last commit](https://img.shields.io/github/last-commit/MikeKozhevnikov/devops-cource)
+![GitHub top language](https://img.shields.io/github/languages/top/MikeKozhevnikov/devops-cource)
+![GitHub language count](https://img.shields.io/github/languages/count/MikeKozhevnikov/devops-cource)
 
 # DevOps Cource
 
