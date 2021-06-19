@@ -1,0 +1,13 @@
+[Unit]
+Description=Flask app service
+After=network-manager.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+WorkingDirectory=/srv/flask_app/
+ExecStart=/usr/bin/python3 /srv/flask_app/flask_app.py
+
+[Install]
+WantedBy=multi-user.target
