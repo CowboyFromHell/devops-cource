@@ -2,7 +2,7 @@ from flask import Flask, request,json
 import emoji
 app = Flask(__name__)
 
-your_name = "Mikhail"
+your_name = "Mikhail Kozhevnikov"
 index_response_curl="""
 █████████████████████████████████████
 █████████████████████████████████████
@@ -57,7 +57,7 @@ def recieve_json():
 
     for i in range(int(request_count)):
         response+=emoji.emojize(":" + request_animal + ":") + " says " +  request_sound +"\n"
-    response+="Made with " + emoji.emojize(':red_heart:', use_aliases=True) + " by " + your_name + "\n"
+    response+="Made with " + emoji.emojize(':victory_hand:', use_aliases=True) + "  by " + your_name + "\n"
     return response
 
 if __name__ == '__main__':
