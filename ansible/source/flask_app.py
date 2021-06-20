@@ -27,7 +27,7 @@ index_response_curl="""
 """
 
 index_response_noncurl="""
-<img src="https://amelie.netcode.club/QR_Code_github.png">
+<img src="https://raw.githubusercontent.com/MikeKozhevnikov/devops-cource/main/media/ansible/QR_Code_github.png">
 """
 
 @app.route('/', methods=['GET'])
