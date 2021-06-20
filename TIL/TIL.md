@@ -134,3 +134,10 @@ Did this shields for the beginning:
 ![GitHub repo size](https://img.shields.io/github/repo-size/MikeKozhevnikov/devops-cource)
 
 I read the articles on Wikipedia about [Go](https://golang.org) programming language in [Russian](https://ru.wikipedia.org/wiki/Go) and [English](https://en.wikipedia.org/wiki/Go_(programming_language)), as well as the article about [syntactic sugar](https://ru.wikipedia.org/wiki/Синтаксический_сахар). I was more or less familiar with the Go language before, but it was new to me that the [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) tools in Go were limited to interfaces.
+
+I wrote the first working version of the playbook for Ansible. I learned about installing packages, state options, creating directories, copying files, [handlers](https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html), working with services in Ansible playbooks and also executing tasks with elevated privileges or as a different user with [become](https://docs.ansible.com/ansible/latest/user_guide/become.html).
+
+### 20/06/2021
+I was so busy writing a script for Git task (especially filtering the results of [jq](https://stedolan.github.io/jq/), that I had to miss the broadcast of the Formula 1 French Grand Prix. But that's okay, I'll watch it later. The main thing is not to read any news about Formula 1.
+
+To work with jq it is very helpful to use the website [jqplay.org](https://jqplay.org). The site gives real-time results of JSON filtering.
