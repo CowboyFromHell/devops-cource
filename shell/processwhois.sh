@@ -49,7 +49,7 @@ fi
 # Default values for arguments and variables
 num_default=5
 state_default='ALL'
-socket_states=(ESTABLISHED TIME_WAIT CLOSE_WAIT LISTEN)
+socket_states=(ESTABLISHED SYN_SENT SYN_RECV FIN_WAIT1 FIN_WAIT2 TIME_WAIT CLOSE CLOSE_WAIT LAST_ACK LISTEN CLOSING UNKNOWN)
 debug_flag=0
 version_flag=0
 help_flag=0
